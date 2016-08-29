@@ -1,0 +1,68 @@
+<?xml version ="1.0" Encoding = "utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 11//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml>"
+<head><title>program 2-b</title>
+<script type="text/javascript">
+function validator()
+{
+var usn=document.getElementById('req1');
+var sem=document.getElementById('req2');
+alert(usn.value);
+alert(sem.value);
+if(iscorrect(usn))
+{
+if(isperfect(sem))
+return true;
+}
+return false;
+}
+
+function isperfect(elem2)
+{
+var semexp=/[1-8]$/
+if(elem2.value.length==0)
+{
+alert("Semester Number is empty");
+elem2.focus();
+return false;
+}
+else if(!elem2.value.match(semexp))
+{
+alert("Invalid Semester number");
+elem2.focus();
+return false;
+}
+alert("semester number is correct");
+return true;
+}
+function iscorrect(elem1)
+{
+var usnexp=/[1-4][A-Z][A-Z][0-9][0-9][A-Z][A-Z][0-9][0-9][0-9]$/
+if(elem1.value.length==0)
+{
+alert("USN Number is empty");
+elem1.focus();
+return false;
+}
+else if(!elem1.value.match(usnexp))
+{
+alert("USN number should be in format DAADDAADDD");
+elem1.focus();
+return false;
+}
+alert("USN number is CORRECT");
+return true;
+}
+
+</script></head>
+<body>
+<form onsubmit='return validator()'>
+<label>Enter your USN in DAADDAADDD format:<input type='text' id="req1" size="10", maxlength="10"/></label>
+<br/>
+<label>Enter semester in D[1-8] format:<input type='text' id='req2' size='10', maxlength="10"/></label><br/>
+<input type="submit" value="validate"/>
+<input type="reset"/>
+</form>
+</body>
+</html>
